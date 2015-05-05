@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{8181f32c-b1b2-4785-b697-77866672f28e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainClasses">
+      <UniqueIdentifier>{9fc15e4f-c62a-4ced-8fa9-3fd38cbb2232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainClasses\Managers">
+      <UniqueIdentifier>{6095cc9f-5ad7-4c8a-8266-a70229063c1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainClasses\GameObject">
+      <UniqueIdentifier>{a88b04b1-04d3-4332-8ec0-debf59012748}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Tile">
+      <UniqueIdentifier>{c883abcf-ed6c-4857-8ae0-6c08cc6ab04c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainClasses\Game">
+      <UniqueIdentifier>{e66ea207-7313-4bf8-a56b-e0e6add942bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainClasses\Utils">
+      <UniqueIdentifier>{3d344768-645d-4036-998e-83984b68e2f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\Player">
+      <UniqueIdentifier>{c881b483-d9b9-4d14-aed8-056845451a04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\GUI">
+      <UniqueIdentifier>{edb061e0-bb79-4761-b012-622ae77a7711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects\GUI\GUIText">
+      <UniqueIdentifier>{8b962c41-2917-4ac1-afc4-aec7fa6c12a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainClasses\Textures">
+      <UniqueIdentifier>{3fdb5361-27d7-44bd-82a0-7181eed80732}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>MainClasses\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Objects\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>MainClasses\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWindow.cpp">
+      <Filter>MainClasses\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogger.cpp">
+      <Filter>MainClasses\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>MainClasses\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Objects\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIText.cpp">
+      <Filter>Objects\GUI\GUIText</Filter>
+    </ClCompile>
+    <ClCompile Include="PerlinNoise.cpp" />
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>MainClasses\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>MainClasses\Textures</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameObject.h">
+      <Filter>MainClasses\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameObject.h">
+      <Filter>MainClasses\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Objects\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLogger.h">
+      <Filter>MainClasses\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>MainClasses\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>MainClasses\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Objects\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIText.h">
+      <Filter>Objects\GUI\GUIText</Filter>
+    </ClInclude>
+    <ClInclude Include="PerlinNoise.h" />
+    <ClInclude Include="TextureManager.h">
+      <Filter>MainClasses\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>MainClasses\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>MainClasses\Textures</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
