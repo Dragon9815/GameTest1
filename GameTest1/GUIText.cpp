@@ -15,7 +15,7 @@ GUIText::~GUIText()
 
 }
 
-void GUIText::render(int camX, int camY)
+void GUIText::render(float camX, float camY)
 {
 	GameObject::render(0, 0);
 	TextureManager::Instance()->draw(this->textureID, this->x, this->y, this->width, this->height);
@@ -26,12 +26,12 @@ void GUIText::update(Uint32 deltaTime)
 	GameObject::update(deltaTime);
 }
 
-void GUIText::load(std::string TextID, std::string textureID, int x, int y, int width, int height)
+void GUIText::load(std::string TextID, std::string textureID, float x, float y, float width, float height)
 {
-	int w, h;
+	/*int w, h;
 	w = width;
 	h = height;
-	if (width == -1)
+	if (w == -1)
 	{
 		w = TextureManager::Instance()->getTextureWidth(textureID);
 	}
@@ -39,9 +39,9 @@ void GUIText::load(std::string TextID, std::string textureID, int x, int y, int 
 	if (h == -1)
 	{
 		h = TextureManager::Instance()->getTextureHeight(textureID);
-	}
+	}*/
 
-	GameObject::load(TextID, textureID, x, y, w, h);
+	GameObject::load(TextID, textureID, x, y, width, height);
 }
 
 void GUIText::handleInput(SDL_Event e)

@@ -28,16 +28,16 @@ TTF_Font* TextureManager::getFont()
 
 float TextureManager::getTextureHeight(std::string textureID)
 {
-	Texture tex = this->m_TextureMap[textureID];
+	Texture* tex = this->m_TextureMap[textureID];
 
-	return tex.getHeight();
+	return tex->getHeight();
 }
 
 float TextureManager::getTextureWidth(std::string textureID)
 {
-	Texture tex = this->m_TextureMap[textureID];
+	Texture* tex = this->m_TextureMap[textureID];
 
-	return tex.getWidth();
+	return tex->getWidth();
 }
 
 bool TextureManager::load(std::string fileName, std::string id)
@@ -54,8 +54,8 @@ bool TextureManager::load(std::string fileName, std::string id)
 
 	if (pTexture != 0)
 	{
-		Texture tex;
-		tex.setTexture(pTexture, (float)pTempSurface->w, (float)pTempSurface->h);
+		Texture* tex = (Texture*)malloc(sizeof(Texture));
+		tex->setTexture(pTexture, (float)pTempSurface->w, (float)pTempSurface->h);
 		m_TextureMap[id] = tex;
 		SDL_FreeSurface(pTempSurface);
 		return true;
@@ -80,8 +80,8 @@ bool TextureManager::loadText(std::string text, SDL_Color textColor, std::string
 
 	if (pTexture != 0)
 	{
-		Texture tex;
-		tex.setTexture(pTexture, (float)textSurface->w, (float)textSurface->h);
+		Texture* tex = (Texture*)malloc(sizeof(Texture));
+		tex->setTexture(pTexture, (float)textSurface->w, (float)textSurface->h);
 		m_TextureMap[id] = tex;
 		SDL_FreeSurface(textSurface);
 		return true;
@@ -104,7 +104,7 @@ void TextureManager::draw(std::string id, float x, float y, float width, float h
 	destRect.x = (int)x;
 	destRect.y = (int)y;
 
-	SDL_RenderCopyEx(this->m_Renderer, m_TextureMap[id].getTexture(), &srcRect, &destRect, 0, 0, flip);
+	SDL_RenderCopyEx(this->m_Renderer, m_TextureMap[id]->getTexture(), &srcRect, &destRect, 0, 0, flip);
 }
 
 void TextureManager::drawFrame(std::string id, float x, float y, float width, float height, int currentRow, int currentFrame, SDL_RendererFlip flip)
@@ -119,5 +119,5 @@ void TextureManager::drawFrame(std::string id, float x, float y, float width, fl
 	destRect.x = (int)x;
 	destRect.y = (int)y;
 
-	SDL_RenderCopyEx(this->m_Renderer, m_TextureMap[id].getTexture(), &srcRect, &destRect, 0, 0, flip);
+	SDL_RenderCopyEx(this->m_Renderer, m_TextureMap[id]->getTexture(), &srcRect, &destRect, 0, 0, flip);
 }

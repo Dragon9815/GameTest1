@@ -83,15 +83,14 @@ void Game::update()
 	ObjectManager::Instance()->update(&this->renderTimer);
 	this->renderTimer.restart();
 
-	this->Camera->setX((((this->mainPlayer.getX() + this->mainPlayer.getWidth()) / 2) - (SCREEN_WIDTH / 2)) + (int)(this->mainPlayer.getX() / 2));
-	this->Camera->setY((((this->mainPlayer.getY() + this->mainPlayer.getHeight()) / 2) - (SCREEN_HEIGHT / 2)) + (int)(this->mainPlayer.getY() / 2));
+	this->Camera->setX(-SCREEN_WIDTH / 2 - this->mainPlayer.getX() / 2 /*+ this->mainPlayer.getWidth() / 2*/);
+	this->Camera->setY(-SCREEN_HEIGHT / 2 - this->mainPlayer.getY() / 2 /*+ this->mainPlayer.getHeight() / 2*/);
 	
 }
 
 void Game::handleInput(SDL_Event e)
 {
 	ObjectManager::Instance()->handleInput(e);
-
 }
 
 void Game::load()
@@ -99,7 +98,7 @@ void Game::load()
 	TextureManager::Instance()->load("Test.png", "test");
 	TextureManager::Instance()->load("grass.png", "grass");
 
-	SDL_Color textColor = { 255, 255, 255, 255 };
+	SDL_Color textColor = { 0, 0, 0, 255 };
 	TextureManager::Instance()->loadText("Hallo", textColor, "Text1");
 
 	int pos;
@@ -117,8 +116,8 @@ void Game::load()
 
 	mainPlayer.load("Player", "test", 0, 0, 64, 64);
 	REGISTER(&this->mainPlayer, 1);
-	mainPlayer.setSpeed(5.0f);
+	mainPlayer.setSpeed(2.0f);
 	
-	testText.load("TestText1", "Text1", 0, 0);
-	REGISTER(&this->testText, 2)
+	testText.load("TestText1", "Text1", 0, 0, 100, 100);
+	REGISTER(&this->testText, 0)
 }

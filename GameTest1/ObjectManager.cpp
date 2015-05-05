@@ -1,4 +1,5 @@
 #include "ObjectManager.h"
+#include "TextureManager.h"
 #include "GameLogger.h"
 
 ObjectManager* ObjectManager::m_pInstance = 0;
@@ -34,7 +35,7 @@ void ObjectManager::remove(std::string ID)
 	}
 }
 
-void ObjectManager::render(int camX, int camY)
+void ObjectManager::render(float camX, float camY)
 {
 	for (Uint32 l = 0; l < this->m_ObjectMap.size(); l++) // Level | 0 = Background
 	{
@@ -47,18 +48,17 @@ void ObjectManager::render(int camX, int camY)
 
 void ObjectManager::update(Timer* timer)
 {
-	
-
 	for (Uint32 l = 0; l < this->m_ObjectMap.size(); l++) // Level | 0 = Background
 	{
 		for (Uint32 i = 0; i < this->m_ObjectMap[l]->size(); i++)
 		{
 			this->m_ObjectMap[l]->at(i)->update(timer->GetTicks() + 1);
-			/*std::stringstream ss;
-			ss << timer->GetTicks();
-			LOG(ss);*/
-			timer->restart();
+			//timer->restart();
 		}
+		/*SDL_Color tc = { 255, 255, 255, 255 };
+		std::stringstream ss;
+		ss << timer->GetTicks();
+		TextureManager::Instance()->loadText(ss.str(), tc, "Text1");*/
 	}
 }
 

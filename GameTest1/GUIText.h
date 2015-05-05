@@ -9,10 +9,10 @@ public:
 	GUIText();
 	~GUIText();
 
-	void render(int camX, int camY);
+	void render(float camX, float camY);
 	void update(Uint32 deltaTime);
 	void handleInput(SDL_Event e);
-	void load(std::string tileID, std::string textureID, int x, int y, int width = -1, int height = -1);
+	void load(std::string tileID, std::string textureID, float x, float y, float width, float height);
 };
 
 #endif

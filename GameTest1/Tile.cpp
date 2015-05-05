@@ -18,7 +18,7 @@ Tile::~Tile()
 void Tile::render(float camX, float camY)
 {
 	GameObject::render(camX, camY);
-	TextureManager::Instance()->draw(this->textureID, (int)(this->x - camX), (int)(this->y - camY), (int)this->width, (int)this->height);
+	TextureManager::Instance()->draw(this->textureID, this->x - camX, this->y - camY, this->width, this->height);
 }
 
 void Tile::update(Uint32 deltaTime)

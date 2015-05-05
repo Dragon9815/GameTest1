@@ -25,7 +25,7 @@ public:
 	void add(GameObject* object, Uint32 level);
 	void remove(std::string ID);
 
-	void render(int camX, int camY);
+	void render(float camX, float camY);
 	void update(Timer* timer);
 	void handleInput(SDL_Event e);
 

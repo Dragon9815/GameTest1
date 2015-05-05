@@ -44,7 +44,7 @@ private:
 
 	~TextureManager() {};
 
-	std::map<std::string, Texture> m_TextureMap;
+	std::map<std::string, Texture*> m_TextureMap;
 
 	SDL_Renderer* m_Renderer;
 	TTF_Font* m_Font;
