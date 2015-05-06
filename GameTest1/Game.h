@@ -9,12 +9,6 @@
 #include "Player.h"
 #include "GUIText.h"
 
-#define SCREEN_HEIGHT 720
-#define SCREEN_WIDTH  1280
-
-#define TERRAIN_HEIGHT 4992
-#define TERRAIN_WIDTH  4992
-
 class Game
 {
 public:

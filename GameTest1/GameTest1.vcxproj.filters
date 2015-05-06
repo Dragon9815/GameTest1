@@ -34,6 +34,9 @@
     <Filter Include="MainClasses\Textures">
       <UniqueIdentifier>{3fdb5361-27d7-44bd-82a0-7181eed80732}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainClasses\Camera">
+      <UniqueIdentifier>{9f01d3d6-c9cb-495c-9f44-867afcbf31b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp">
@@ -68,6 +71,9 @@
     </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>MainClasses\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>MainClasses\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +114,12 @@
     <ClInclude Include="IMoveable.h" />
     <ClInclude Include="Texture.h">
       <Filter>MainClasses\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>MainClasses\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="defs.h">
+      <Filter>MainClasses</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

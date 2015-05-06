@@ -7,6 +7,7 @@
 #include "Game.h"
 #include "GameLogger.h"
 #include "Timer.h"
+#include "defs.h"
 
 #define FPS 10
 #define FRAME_TIME (1000/FPS)

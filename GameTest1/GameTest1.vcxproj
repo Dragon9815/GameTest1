@@ -77,6 +77,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameLogger.cpp" />
@@ -90,6 +91,8 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="defs.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameLogger.h" />
     <ClInclude Include="GUIText.h" />

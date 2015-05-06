@@ -3,6 +3,7 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "GameLogger.h"
+#include "defs.h"
 
 Player::Player()
 {

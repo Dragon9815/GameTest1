@@ -4,6 +4,7 @@
 #include "ObjectManager.h"
 #include "Tile.h"
 #include "GUIText.h"
+#include "defs.h"
 #include <sstream>
 
 Game::Game()
