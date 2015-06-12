@@ -92,14 +92,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Converter.h" />
     <ClInclude Include="defs.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameLogger.h" />
     <ClInclude Include="GUIText.h" />
     <ClInclude Include="IMouseInteract.h" />
     <ClInclude Include="IMoveable.h" />
+    <ClInclude Include="Location.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Size.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Game.h" />

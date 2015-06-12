@@ -6,8 +6,7 @@
 
 GUIText::GUIText()
 {
-	x = 0;
-	y = 0;
+	GameObject::GameObject();
 }
 
 GUIText::~GUIText()
@@ -15,10 +14,11 @@ GUIText::~GUIText()
 
 }
 
-void GUIText::render(float camX, float camY)
+void GUIText::render(Camera* cam)
 {
-	GameObject::render(0, 0);
-	TextureManager::Instance()->draw(this->textureID, this->x, this->y, this->width, this->height);
+	Camera* c = new Camera();
+	
+	GameObject::render(cam);
 }
 
 void GUIText::update(Uint32 deltaTime)

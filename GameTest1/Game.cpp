@@ -18,7 +18,11 @@ Game::Game()
 
 	this->renderTimer.start();
 
-	this->Camera = new Vector2D(0, 0);
+	this->camera = new Camera();
+	this->camera->setNullPoint(0, 0);
+
+	this->renderScale = 1.0;
+	this->scaleChanged = false;
 }
 
 Game::~Game()
@@ -74,8 +78,14 @@ void Game::init(int width, int height)
 
 void Game::render()
 {
+	if (scaleChanged)
+	{
+		SDL_RenderSetScale(gRenderer, this->renderScale, this->renderScale);
+		scaleChanged = false;
+	}
+
 	SDL_RenderClear(this->gRenderer);
-	ObjectManager::Instance()->render(this->Camera->getX(), this->Camera->getY());
+	ObjectManager::Instance()->render(this->camera);
 	SDL_RenderPresent(this->gRenderer);
 }
 
@@ -84,13 +94,29 @@ void Game::update()
 	ObjectManager::Instance()->update(&this->renderTimer);
 	this->renderTimer.restart();
 
-	this->Camera->setX(-SCREEN_WIDTH / 2 - this->mainPlayer.getX() / 2 /*+ this->mainPlayer.getWidth() / 2*/);
-	this->Camera->setY(-SCREEN_HEIGHT / 2 - this->mainPlayer.getY() / 2 /*+ this->mainPlayer.getHeight() / 2*/);
-	
+	if (mainPlayer.Location.changed())
+	{
+		this->camera->update();
+		//this->camera->target(this->mainPlayer.Location, this->mainPlayer.Size);
+		LOG(std::to_string(this->mainPlayer.Location.X));
+		LOG(std::to_string(this->mainPlayer.Location.Y));
+		LOG(std::to_string(this->camera->getNullPoint().X));
+		LOG(std::to_string(this->camera->getNullPoint().Y));
+	}
+
+	// this->Camera->setX((this->mainPlayer.getX() - (SCREEN_WIDTH - this->mainPlayer.getWidth())) / 2 + this->mainPlayer.getX() / 2);
+	// this->Camera->setY((this->mainPlayer.getY() - (SCREEN_HEIGHT - this->mainPlayer.getHeight())) / 2 + this->mainPlayer.getY() / 2);
 }
 
 void Game::handleInput(SDL_Event e)
 {
+	if (e.type == SDL_MOUSEWHEEL)
+	{
+		this->renderScale += 0.1 * e.wheel.y;
+		this->camera->setScale(this->renderScale);
+		scaleChanged = true;
+	}
+
 	ObjectManager::Instance()->handleInput(e);
 }
 
@@ -115,10 +141,12 @@ void Game::load()
 		}
 	}
 
-	mainPlayer.load("Player", "test", 0, 0, 64, 64);
+	mainPlayer.load("Player", "test", -64, -64, 64, 64);
 	REGISTER(&this->mainPlayer, 1);
-	mainPlayer.setSpeed(2.0f);
+	mainPlayer.setSpeed(1.0f);
 	
 	testText.load("TestText1", "Text1", 0, 0, 100, 100);
-	REGISTER(&this->testText, 0)
+	REGISTER(&this->testText, 0);
+
+	this->camera->targetObject(&this->mainPlayer);
 }

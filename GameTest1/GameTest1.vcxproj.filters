@@ -121,5 +121,14 @@
     <ClInclude Include="defs.h">
       <Filter>MainClasses</Filter>
     </ClInclude>
+    <ClInclude Include="Converter.h">
+      <Filter>MainClasses\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Size.h">
+      <Filter>MainClasses\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Location.h">
+      <Filter>MainClasses\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,20 +1,33 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "Player.h"
 #include "Vector2D.h"
+#include "Size.h"
+#include "Location.h"
+#include "GameObject.h"
+
+class GameObject; // Forward Deklaration
 
 class Camera
 {
 public:
-	void recalculateFromPlayer(float playerX, float playerY, float playerWidth, float playerHeight);
-	void recalculateFromPlayer(Vector2D playerPos, Vector2D playerDimensions);
+	Camera();
+
+	void setNullPoint(float x, float y);
+	MyLocation getNullPoint();
+
+	void targetObject(GameObject* target);
+	void update();
 
 	int getRelativeX(float absoluteX);
 	int getRelativeY(float absoluteY);
 
+	void setScale(float scale);
+
 private:
-	Vector2D CameraPos;
+	MyLocation	m_CameraPos;
+	float		m_scale;
+	GameObject* p_Target;
 };
 
 #endif

@@ -5,8 +5,10 @@
 #include "IGameObject.h"
 #include "Timer.h"
 #include "Vector2D.h"
+
 #include <map>
 #include <vector>
+#include "Camera.h"
 
 class ObjectManager
 {
@@ -25,7 +27,7 @@ public:
 	void add(GameObject* object, Uint32 level);
 	void remove(std::string ID);
 
-	void render(float camX, float camY);
+	void render(Camera* cam);
 	void update(Timer* timer);
 	void handleInput(SDL_Event e);
 
@@ -36,26 +38,16 @@ public:
 
 	GameObject* getObject(std::string ID);
 
-
-	Vector2D* getCamera() 
-	{
-		return this->Camera;
-	}
-
 private:
 
 	ObjectManager() 
 	{
 		this->m_ObjectMap.push_back(new std::vector<GameObject*>);
-		this->Camera = new Vector2D(0, 0);
 	}
 
 	~ObjectManager() {}
 
 	std::vector<std::vector<GameObject*>*> m_ObjectMap;
-
-	Vector2D* Camera;
-
 
 	static ObjectManager* m_pInstance;
 };

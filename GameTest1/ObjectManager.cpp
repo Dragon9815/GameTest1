@@ -1,6 +1,7 @@
 #include "ObjectManager.h"
 #include "TextureManager.h"
 #include "GameLogger.h"
+#include "Camera.h"
 
 ObjectManager* ObjectManager::m_pInstance = 0;
 
@@ -35,13 +36,13 @@ void ObjectManager::remove(std::string ID)
 	}
 }
 
-void ObjectManager::render(float camX, float camY)
+void ObjectManager::render(Camera* cam)
 {
 	for (Uint32 l = 0; l < this->m_ObjectMap.size(); l++) // Level | 0 = Background
 	{
 		for (Uint32 i = 0; i < this->m_ObjectMap[l]->size(); i++)
 		{
-			this->m_ObjectMap[l]->at(i)->render(camX, camY);
+			this->m_ObjectMap[l]->at(i)->render(cam);
 		}
 	}
 }

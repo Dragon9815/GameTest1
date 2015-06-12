@@ -8,6 +8,7 @@
 #include "Timer.h"
 #include "Player.h"
 #include "GUIText.h"
+#include "Camera.h"
 
 class Game
 {
@@ -42,10 +43,12 @@ private:
 	Tile Test;
 	GUIText testText;
 
-	Vector2D* Camera;
+	Camera* camera;
 
 	bool KeysDown[4];
 	
+	float renderScale;
+	bool scaleChanged;
 	
 };
 

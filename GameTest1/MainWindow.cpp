@@ -3,6 +3,7 @@
 #include <sstream>
 #include <time.h>
 #include <Windows.h>
+#include <thread>
 
 #include "Game.h"
 #include "GameLogger.h"
@@ -12,13 +13,20 @@
 #define FPS 10
 #define FRAME_TIME (1000/FPS)
 
+bool quit;
+Game game;
+Timer FPSTimer;
+
+void handleInput();
+void render();
+
 int main(int argc, char* args[])
 {
-	Game game;
-	Timer FPSTimer;
-
-	bool quit = false;
 	SDL_Event e;
+	Uint32 ticks;
+
+	quit = false;
+
 
 	if (argc > 1)
 	{
@@ -41,19 +49,29 @@ int main(int argc, char* args[])
 	game.init(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	FPSTimer.start();
-	Uint32 ticks;
+
+	//std::thread inputThread(handleInput);
+	//std::thread renderThread(render);
+	
 	while (!quit)
 	{
 		FPSTimer.restart();
+
 		while (SDL_PollEvent(&e) != 0)
 		{
 			if (e.type == SDL_QUIT)
 			{
 				quit = true;
 			}
+
+			if (e.type == SDL_MOUSEWHEEL)
+			{
+				//LOG(std::to_string(e.wheel.y));
+				//LOG(std::to_string(e.wheel.x));
+			}
+			game.handleInput(e);
 		}
 
-		game.handleInput(e);
 		game.update();
 		game.render();
 
@@ -64,5 +82,43 @@ int main(int argc, char* args[])
 		}
 	}
 
+
+
 	return 0;
 }
+
+/*void handleInput()
+{
+	
+
+	while (SDL_PollEvent(&e) != 0)
+	{
+		if (e.type == SDL_QUIT)
+		{
+			quit = true;
+		}
+
+		if (e.type == SDL_MOUSEWHEEL)
+		{
+			LOG(std::to_string(e.wheel.y));
+			LOG(std::to_string(e.wheel.x));
+		}
+		game.handleInput(e);
+	}
+}
+
+void render()
+{
+	Uint32 ticks;
+
+	FPSTimer.restart();
+
+	game.update();
+	game.render();
+
+	ticks = FPSTimer.GetTicks();
+	if (ticks < FRAME_TIME)
+	{
+		SDL_Delay(FRAME_TIME - ticks);
+	}
+}*/

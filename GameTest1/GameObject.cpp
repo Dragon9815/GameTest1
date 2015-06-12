@@ -4,9 +4,18 @@
 #include "GameLogger.h"
 #include "Game.h"
 
-void GameObject::render(float camX, float camY)
+GameObject::GameObject () {
+	Location = MyLocation(0, 0);
+	Size = MySize(0, 0);
+}
+
+GameObject::~GameObject() {
+
+}
+
+void GameObject::render(Camera* cam)
 {
-	
+	TextureManager::Instance()->draw(this->textureID, cam->getRelativeX(Location.X), cam->getRelativeY(Location.Y), Size.Width, Size.Height);
 }
 
 void GameObject::update(Uint32 deltaTime)
@@ -18,10 +27,8 @@ void GameObject::load(std::string ID, std::string textureID, float x, float y, f
 {
 	this->ID = ID;
 	this->textureID = textureID;
-	this->x = x;
-	this->y = y;
-	this->width = width;
-	this->height = height;
+	Location = MyLocation(x, y);
+	Size = MySize(width, height);
 }
 
 void GameObject::handleInput(SDL_Event e)
@@ -31,5 +38,5 @@ void GameObject::handleInput(SDL_Event e)
 
 bool GameObject::intersects(IGameObject* object)
 {
-	return ((this->x < object->x + object->width && this->x > object->x) || (this->x + this->width > object->x && this->x + this->width < object->x + object->width) || (this->y < object->y + object->height && this->y > object->y) || (this->y + this->height > object->y && this->y + this->height < object->y + object->height));
+	return ((Location.X < object->Location.X + object->Size.Width && this->Location.X > object->Location.X) || (this->Location.X + this->Size.Width > object->Location.X && this->Location.X + this->Size.Width < object->Location.X + object->Size.Width) || (this->Location.Y < object->Location.Y + object->Size.Height && this->Location.Y > object->Location.Y) || (this->Location.Y + this->Size.Height > object->Location.Y && this->Location.Y + this->Size.Height < object->Location.Y + object->Size.Height));
 }

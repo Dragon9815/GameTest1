@@ -6,8 +6,7 @@
 
 Tile::Tile()
 {
-	x = 0;
-	y = 0;
+	GameObject::GameObject();
 }
 
 Tile::~Tile()
@@ -15,10 +14,9 @@ Tile::~Tile()
 
 }
 
-void Tile::render(float camX, float camY)
+void Tile::render(Camera* cam)
 {
-	GameObject::render(camX, camY);
-	TextureManager::Instance()->draw(this->textureID, this->x - camX, this->y - camY, this->width, this->height);
+	GameObject::render(cam);
 }
 
 void Tile::update(Uint32 deltaTime)

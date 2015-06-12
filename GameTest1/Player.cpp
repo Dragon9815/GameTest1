@@ -7,8 +7,7 @@
 
 Player::Player()
 {
-	x = 0;
-	y = 0;
+	GameObject::GameObject();
 
 	this->direction = new Vector2D(0, 0);
 }
@@ -18,35 +17,35 @@ Player::~Player()
 
 }
 
-void Player::render(float camX, float camY)
+void Player::render(Camera* cam)
 {
-	GameObject::render(camX, camY);
-	TextureManager::Instance()->draw(this->textureID, this->x - camX, this->y - camY, this->width, this->height);
+	GameObject::render(cam);
+	
 }
 
 void Player::update(Uint32 deltaTime)
 {
 	GameObject::update(deltaTime);
 
-	this->x += this->direction->getX() * deltaTime;
-	this->y += this->direction->getY() * deltaTime;
+	Location.X += this->direction->getX() * deltaTime;
+	Location.Y += this->direction->getY() * deltaTime;
 
-	if (this->x < -(TERRAIN_WIDTH / 2 - SCREEN_WIDTH / 2))
+	if (Location.X < -(TERRAIN_WIDTH / 2 - SCREEN_WIDTH / 2))
 	{
-		this->x = -(TERRAIN_WIDTH / 2 - SCREEN_WIDTH / 2);
+		Location.X = -(TERRAIN_WIDTH / 2 - SCREEN_WIDTH / 2);
 	}
-	else if (this->x + this->width > (TERRAIN_WIDTH / 2 + SCREEN_WIDTH / 2))
+	else if (Location.X + Size.Width > (TERRAIN_WIDTH / 2 + SCREEN_WIDTH / 2))
 	{
-		this->x = (TERRAIN_WIDTH / 2 + SCREEN_WIDTH / 2) - this->width;
+		Location.X = (TERRAIN_WIDTH / 2 + SCREEN_WIDTH / 2) - Size.Width;
 	}
 
-	if (this->y < -(TERRAIN_HEIGHT / 2 - SCREEN_HEIGHT / 2))
+	if (Location.Y < -(TERRAIN_HEIGHT / 2 - SCREEN_HEIGHT / 2))
 	{
-		this->y = -(TERRAIN_HEIGHT / 2 - SCREEN_HEIGHT / 2);
+		this->Location.Y = -(TERRAIN_HEIGHT / 2 - SCREEN_HEIGHT / 2);
 	}
-	else if (this->y + this->height > (TERRAIN_HEIGHT / 2 + SCREEN_HEIGHT / 2))
+	else if (this->Location.X + this->Size.Height > (TERRAIN_HEIGHT / 2 + SCREEN_HEIGHT / 2))
 	{
-		this->y = (TERRAIN_HEIGHT / 2 + SCREEN_HEIGHT / 2) - this->height;
+		this->Location.Y = (TERRAIN_HEIGHT / 2 + SCREEN_HEIGHT / 2) - this->Size.Height;
 	}
 
 	
